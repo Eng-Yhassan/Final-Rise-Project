@@ -6,6 +6,7 @@ import Dashboard from './pages/dashboard'
 import Products from './pages/products'
 import AddProduct from './components/AddProducts'
 import UpdateProduct from './components/UpdateProduct'
+import Cart from './components/Cart'
 const App = () => {
   return (
     <div>
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/products' element={<Products/>}/>
         <Route path='/addProducts' element={<AddProduct/>}/>
         <Route path='/updateProduct/:id' element={<UpdateProduct/>}/>
+        <Route path='/Cart' element={<Cart/>}/>
       </Routes>
     </div>
   )

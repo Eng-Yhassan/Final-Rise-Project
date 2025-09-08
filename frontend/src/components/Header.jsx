@@ -16,7 +16,7 @@ const Header = () => {
         {/* Desktop Menu (Center) */}
         <nav className="hidden md:flex gap-6 text-2xl">
           <Link to="/">
-            <a href="#" className="hover:text-gray-200">Home</a>
+            <p className="hover:text-gray-200">Home</p>
           </Link>
           <a href="#" className="hover:text-gray-200">About</a>
           <a href="#" className="hover:text-gray-200">Services</a>
@@ -28,9 +28,11 @@ const Header = () => {
           <a href="#" className="hover:text-gray-200 flex items-center gap-1 text-2xl">
             <i className="fa-solid fa-right-to-bracket"></i> Login
           </a>
-          <a href="#" className="hover:text-gray-200 flex items-center gap-1 text-2xl">
-            <i className="fa-solid fa-cart-shopping"></i> Cart
-          </a>
+          <Link to="/Cart">
+            <p className="hover:text-gray-200 flex items-center gap-1 text-2xl">
+              <i className="fa-solid fa-cart-shopping"></i> Cart
+            </p>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -47,24 +49,26 @@ const Header = () => {
       </div>
 
       {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-yellow-500 px-4 py-3 space-y-3 text-2xl">
-          <Link to="/">
-            <a href="#" className="block hover:text-gray-200">Home</a>
-          </Link>
-          <a href="#" className="block hover:text-gray-200">About</a>
-          <a href="#" className="block hover:text-gray-200">Services</a>
-          <a href="#" className="block hover:text-gray-200">Contact</a>
-          <hr className="border-gray-400" />
-          <a href="#" className="block hover:text-gray-200 text-2xl">
-            <i className="fa-solid fa-right-to-bracket mr-1 "></i> Login
-          </a>
-          <a href="#" className="block hover:text-gray-200 text-2xl">
-            <i className="fa-solid fa-cart-shopping mr- "></i> Cart
-          </a>
-        </div>
-      )}
-    </header>
+      {
+        isOpen && (
+          <div className="md:hidden bg-yellow-500 px-4 py-3 space-y-3 text-2xl">
+            <Link to="/">
+              <a href="#" className="block hover:text-gray-200">Home</a>
+            </Link>
+            <a href="#" className="block hover:text-gray-200">About</a>
+            <a href="#" className="block hover:text-gray-200">Services</a>
+            <a href="#" className="block hover:text-gray-200">Contact</a>
+            <hr className="border-gray-400" />
+            <a href="#" className="block hover:text-gray-200 text-2xl">
+              <i className="fa-solid fa-right-to-bracket mr-1 "></i> Login
+            </a>
+            <a href="#" className="block hover:text-gray-200 text-2xl">
+              <i className="fa-solid fa-cart-shopping mr- "></i> Cart
+            </a>
+          </div>
+        )
+      }
+    </header >
   );
 };
 

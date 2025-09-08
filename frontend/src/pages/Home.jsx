@@ -17,6 +17,15 @@ const Home = () => {
     useEffect(() => {
         handleReadData()
     }, []);
+
+
+    const handleStoreData = (data) => {
+        const newData = JSON.parse(localStorage.getItem("products")) || []
+
+        newData.push(data)
+        localStorage.setItem("Products", JSON.stringify(newData))
+    }
+
     return (
         <div>
             <HeroSection />
@@ -40,11 +49,13 @@ const Home = () => {
 
                         {/* Product Price */}
                         <p className="text-blue-600 font-bold text-xl mt-2">${item.price}</p>
+                        <p className={`${item.status === "Available" ? "text-green-600" : "text-red-600"} font-bold text-xl mt-2`}>{item.status}</p>
 
                         {/* Add to Cart Button */}
                         <button
-                            
-                            className={`mt-4 px-4 py-2 rounded-lg w-full "bg-blue-600 bg-yellow-500 text-white hover:bg-blue-700"
+                            onClick={() => handleStoreData(item)}
+                            disabled={item.status !== "Available"}
+                            className={`mt-4 px-4 py-2 rounded-lg w-full "bg-blue-600 ${item.status == "Available" ? "bg-green-500" : "bg-red-400 line-through"} text-white hover:bg-blue-700"
                                  "bg-gray-300 cursor-not-allowed"
                                 }`}
                         >

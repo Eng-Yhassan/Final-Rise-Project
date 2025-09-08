@@ -44,7 +44,7 @@ const ProductTable = () => {
                             <th className="p-3">Description</th>
                             <th className="p-3">Quantity</th>
                             <th className="p-3">Price</th>
-                            <th className="p-3">Category</th>
+                            <th className="p-3">Status</th>
                             <th className="p-3">Actions</th>
                         </tr>
                     </thead>
@@ -69,7 +69,7 @@ const ProductTable = () => {
                                     ${item.price}
                                 </td>
                                 <td
-                                    className={`p-3 font-medium ${item.status === "Availbe" ? "text-green-600" : "text-red-500"
+                                    className={`p-3 font-medium ${item.status === "Available" ? "text-green-600" : "text-red-500"
                                         }`}
                                 >
                                     {item.status}
