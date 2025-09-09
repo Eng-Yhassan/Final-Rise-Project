@@ -41,6 +41,7 @@ const ProductTable = () => {
                             <th className="p-3">#</th>
                             <th className="p-3">Image</th>
                             <th className="p-3">Product Name</th>
+                            <th className="p-3">category</th>
                             <th className="p-3">Description</th>
                             <th className="p-3">Quantity</th>
                             <th className="p-3">Price</th>
@@ -63,6 +64,7 @@ const ProductTable = () => {
                                     />
                                 </td>
                                 <td className="p-3">{item.name}</td>
+                                <td className="p-3">{item.category}</td>
                                 <td className="p-3">{item.desc}</td>
                                 <td className="p-3">{item.quantity}</td>
                                 <td className="p-3 text-blue-600 font-semibold">

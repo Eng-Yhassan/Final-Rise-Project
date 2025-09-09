@@ -26,6 +26,7 @@ const UpdateProduct = () => {
     formData.append("desc", product.desc);
     formData.append("quantity", product.quantity);
     formData.append("status", product.status);
+    formData.append("category", product.category);
 
     if (file) {
       formData.append("img", file); // haddii file cusub la doorto
@@ -64,6 +65,13 @@ const UpdateProduct = () => {
           value={product.desc || ""}
           onChange={(e) => setProduct({ ...product, desc: e.target.value })}
           placeholder="Description"
+          className="w-full border p-2 rounded"
+        />
+        <input
+          type="text"
+          value={product.category || ""}
+          onChange={(e) => setProduct({ ...product, category: e.target.value })}
+          placeholder="category"
           className="w-full border p-2 rounded"
         />
 

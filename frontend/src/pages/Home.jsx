@@ -20,15 +20,40 @@ const Home = () => {
 
 
     const handleStoreData = (data) => {
-        const newData = JSON.parse(localStorage.getItem("products")) || []
+        const newData = JSON.parse(localStorage.getItem("Products")) || []
 
-        newData.push(data)
-        localStorage.setItem("Products", JSON.stringify(newData))
+        const existId = newData.some((item) => item._id === data._id) // true or false 
+
+        if (!existId) {
+            newData.push(data)
+            localStorage.setItem("Products", JSON.stringify(newData))
+        }
     }
 
     return (
         <div>
             <HeroSection />
+            <div class="flex justify-end mt-10 gap-4 p-4">
+                <label class="flex items-center gap-2 px-3 py-2 rounded-full border cursor-pointer hover:bg-gray-100">
+                    <input type="radio" name="smart phone" class="text-red-500 focus:ring-red-500" />
+                    <span class="text-sm font-medium text-gray-700">Smart Phone</span>
+                </label>
+
+                <label class="flex items-center gap-2 px-3 py-2 rounded-full border cursor-pointer hover:bg-gray-100">
+                    <input type="radio" name="smart phone" class="text-red-500 focus:ring-red-500" />
+                    <span class="text-sm font-medium text-gray-700">Laptops</span>
+                </label>
+
+                <label class="flex items-center gap-2 px-3 py-2 rounded-full border cursor-pointer hover:bg-gray-100">
+                    <input type="radio" name="smart phone" class="text-red-500 focus:ring-red-500" />
+                    <span class="text-sm font-medium text-gray-700">Desktop</span>
+                </label>
+
+                <label class="flex items-center gap-2 px-3 py-2 rounded-full border cursor-pointer hover:bg-gray-100">
+                    <input type="radio" name="smart phone" class="text-red-500 focus:ring-red-500" />
+                    <span class="text-sm font-medium text-gray-700">Mobile</span>
+                </label>
+            </div>
             <div className="flex flex-wrap justify-center gap-6 p-6">
                 {products.map((item) => (
                     <div

@@ -9,7 +9,8 @@ const CreateProduct = async (req, res) => {
             price: req.body.price,
             desc: req.body.desc,
             quantity: req.body.quantity,
-            prImage: req.file.filename
+            prImage: req.file.filename,
+            category: req.body.category
         })
         await newData.save()
         res.send(newData)
@@ -52,6 +53,7 @@ const UpdateProduct = async (req, res) => {
         product.price = req.body.price || product.price;
         product.desc = req.body.desc || product.desc;
         product.quantity = req.body.quantity || product.quantity;
+        product.category = req.body.category || product.category;
 
         if (req.file) {
             product.prImage = req.file.filename;

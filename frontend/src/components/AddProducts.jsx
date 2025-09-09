@@ -7,6 +7,7 @@ const AddProduct = () => {
   const [desc, setDesc] = useState("");
   const [quantity, setQuantity] = useState("");
   const [img, setImg] = useState(null);
+  const [category, setCategory] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ const AddProduct = () => {
     formData.append("price", price);
     formData.append("desc", desc);
     formData.append("quantity", quantity);
+    formData.append("category", category);
     formData.append("img", img);
 
     try {
@@ -27,6 +29,7 @@ const AddProduct = () => {
       setPrice("");
       setDesc("");
       setQuantity("");
+      setCategory("");
       setImg(null);
     } catch (error) {
       console.error("Error adding product", error);
@@ -77,6 +80,17 @@ const AddProduct = () => {
             type="number"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
+            className="w-full border p-2 rounded"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block font-medium">category</label>
+          <input
+            type="text"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
             className="w-full border p-2 rounded"
             required
           />

@@ -28,6 +28,7 @@ const Header = () => {
           <a href="#" className="hover:text-gray-200 flex items-center gap-1 text-2xl">
             <i className="fa-solid fa-right-to-bracket"></i> Login
           </a>
+          <p className="hover:text-gray-200 flex items-center gap-1 text-2xl bg-green-500 py-2 px-2 rounded-lg"> Register Customer  </p>
           <Link to="/Cart">
             <p className="hover:text-gray-200 flex items-center gap-1 text-2xl">
               <i className="fa-solid fa-cart-shopping"></i> Cart
