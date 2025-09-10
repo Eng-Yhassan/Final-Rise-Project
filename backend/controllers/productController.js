@@ -23,7 +23,16 @@ const CreateProduct = async (req, res) => {
 // Read More
 const ReadProducts = async (req, res) => {
     try {
-        const products = await ProductModel.find();
+
+        const {category} = req.body || {}
+
+        let filterData = {}
+
+        if(category){
+            filterData = {category}
+        }
+        
+        const products = await ProductModel.find(filterData);
         res.status(200).json(products);
     } catch (error) {
         console.error(error);

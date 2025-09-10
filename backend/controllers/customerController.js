@@ -1,0 +1,64 @@
+const customerModel = require("../models/customerModel")
+const bcrypt = require("bcryptjs")
+
+// Register
+const createCustomer = async (req, res) => {
+
+    try {
+        const { name, phone, email, password } = req.body
+
+        const exisistEmail = await customerModel.findOne({ email })
+
+        if (exisistEmail) {
+            res.status(400).json({ message: "This Email Already Registered" })
+        }
+
+        const hashPassowrd = await bcrypt.hash(password, 10)
+
+        const newData = new customerModel({
+            name, phone, email, password: hashPassowrd
+        })
+
+        await newData.save()
+
+        res.send(newData)
+    } catch (error) {
+        res.status(400).json({ error: "server error" })
+    }
+
+}
+
+// Login
+const loginCustomer = async (req, res) => {
+    try {
+
+        const { email, password } = req.body
+
+        const exisistEmail = await customerModel.findOne({ email })
+
+        if (!exisistEmail) {
+            res.status(400).json({ message: "Incorect email" })
+        }
+
+        const checkPassowrd = await bcrypt.compare(password,exisistEmail.password)
+
+        if(!checkPassowrd){
+            res.status(400).json({ message: "Incorect passowrd" })
+        }
+
+        res.send({
+            message: "Welcome Back",
+            customer:{
+                name: exisistEmail.name,
+                phone: exisistEmail.phone,
+                email: exisistEmail.email,
+            }
+        })
+
+    } catch (error) {
+        res.status(400).json({ error: "server error" })
+
+    }
+}
+
+module.exports = { createCustomer, loginCustomer }

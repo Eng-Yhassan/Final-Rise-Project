@@ -1,8 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const getItem = localStorage.getItem("customer")
+
+  const navigate = useNavigate()
+  const logOut = () => {
+    localStorage.clear()
+    navigate("/")
+  }
 
   return (
     <header className="bg-yellow-500 text-white shadow-md">
@@ -25,10 +33,34 @@ const Header = () => {
 
         {/* Right Side (Login + Cart) */}
         <div className="hidden md:flex items-center gap-4">
-          <a href="#" className="hover:text-gray-200 flex items-center gap-1 text-2xl">
-            <i className="fa-solid fa-right-to-bracket"></i> Login
-          </a>
-          <p className="hover:text-gray-200 flex items-center gap-1 text-2xl bg-green-500 py-2 px-2 rounded-lg"> Register Customer  </p>
+          {
+            getItem ?
+              <div className="flex gap-4 items-center ">
+                <div className="bg-green-500 w-10 h-10 rounded-full text-center">
+                  <h1 className="text-3xl">{JSON.parse(getItem).data?.customer.name[0]}</h1>
+                </div>
+
+                <button
+                  onClick={logOut}
+                  className="hover:text-gray-200 flex items-center gap-1 text-2xl bg-green-500 py-2 px-2 rounded-lg"> logOut  </button>
+
+              </div>
+              :
+              <div className="flex gap-4 items-center">
+                <Link to="/Login">
+                  <button className="block hover:text-gray-200 text-2xl">
+                    <i className="fa-solid fa-right-to-bracket mr-1 "></i> Login
+                  </button>
+                </Link>
+                <Link to="/Register">
+                  <button className="hover:text-gray-200 flex items-center gap-1 text-2xl bg-green-500 py-2 px-2 rounded-lg"> Register Customer  </button>
+                </Link>
+              </div>
+          }
+
+
+
+
           <Link to="/Cart">
             <p className="hover:text-gray-200 flex items-center gap-1 text-2xl">
               <i className="fa-solid fa-cart-shopping"></i> Cart
@@ -60,9 +92,14 @@ const Header = () => {
             <a href="#" className="block hover:text-gray-200">Services</a>
             <a href="#" className="block hover:text-gray-200">Contact</a>
             <hr className="border-gray-400" />
-            <a href="#" className="block hover:text-gray-200 text-2xl">
-              <i className="fa-solid fa-right-to-bracket mr-1 "></i> Login
-            </a>
+            <Link to="/Login">
+              <button className="block hover:text-gray-200 text-2xl">
+                <i className="fa-solid fa-right-to-bracket mr-1 "></i> Login
+              </button>
+            </Link>
+            <Link to="/Register">
+              <button className="hover:text-gray-200 flex items-center gap-1 text-2xl bg-green-500 py-2 px-2 rounded-lg"> Register Customer  </button>
+            </Link>
             <a href="#" className="block hover:text-gray-200 text-2xl">
               <i className="fa-solid fa-cart-shopping mr- "></i> Cart
             </a>
