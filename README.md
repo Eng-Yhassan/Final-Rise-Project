@@ -137,3 +137,6 @@ Haddii aad su'aal qabto ama aad rabto in aad wax ka beddesho, eeg faylasha kor k
 
 ## English Summary
 This project is a full-stack e-commerce/bookstore app with user authentication, product management, and a shopping cart. Backend is built with Express.js and MongoDB, frontend with React, Vite, and TailwindCSS. See above for detailed file-by-file documentation and setup instructions.
+
+
+### By Yahye Hassan Abdullahi {Yerman}
